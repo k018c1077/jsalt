@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./design.css">
+
+</head>
+<body>
+  <div class="header">
+    <h1>猿でもわかるJavascript プロトタイプベース</h1>
+  </div>
+  <section>
+    <h2>プロトタイプベースってなんぞや</h2>
+    <div class="article">
+      <p>
+        プロトタイプベースとは、Javascriptにおける
+        <strong>オブジェクト指向</strong>
+        を実現するための考え方です。
+      </p>
+      <p>Java言語やC#などが採用しているクラスベースとは根本的な考え方が異なります。</p>
+      <p>
+        クラスベースでは、クラスをもとにインスタンスを生成する。という考えです。
+        つまり、すべてのものには設計図があるひつようがあります。
+        そのため、実行時には必ずmainクラスを作る必要があるわけですね。
+      </p>
+      <p>プロトタイプベースではそういった考えではありません。</p>
+      <p>プロトタイプベースではすべてのものがオブジェクトになります。</p>
+      <p>つまり、クラスなどと言った設計図を作るという概念がなく、関数さえもオブジェクトなのです。</p>
+      <p>ちなみに、オブジェクトというのはすべて連想配列です。</p>
+      <p>PHPでやったので覚えていますか？</p>
+      <iframe height="400px" width="100%" src="https://repl.it/@k018c1077/JS1?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      
+    </div>
+
+  </section>
+  <section>
+    <h2>じゃあ授業でやったクラスってなにさ</h2>
+    <div class="article">
+      <p>ES6からclassという文法がサポートされました。</p>
+      <p>これは本来クラスという概念のないJavascriptにおいて、クラスのような書き方でプロトタイプベースを実現することができるというものです。</p>
+      <p>内部的には勝手に変換をしてくれるいわゆる
+      <strong>シンタックスシュガー/糖衣構文</strong>
+      というものなのです。</p>
+      <p>あくまで書きやすくするだけで中身はプロトタイプベースですから、そこを理解せずにわかりやすいからというだけの理由でclassに逃げるのは禁忌です。</p>
+      
+    </div>
+  </section>
+  <section>
+    <h2>それじゃ。プロトタイプベースの海に潜ろうか</h2>
+    <div class="article">
+      <p>プロトタイプベースはとてもかんたんです。</p>
+      <p><strong>オブジェクトは別のオブジェクトをプロパティとして持つことができる。</strong></p>
+      <p>これだけです。</p>
+      <p>身近なものにたとえてみましょう。</p>
+      <p>学校はクラスを持つことができます。</p>
+      <p>クラスは生徒を持つことができます。</p>
+      <p>これをプロトタイプベースで書くと以下のようになります。</p>
+      <iframe height="800px" width="100%" src="https://repl.it/@k018c1077/JS2?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      <p>これがプロトタイプベース、オブジェクトの基礎です。</p>
+      <p>配列、メソッド、全てがオブジェクトです。</p>
+      <p>ここにはコンストラクタなんてものはありません。</p>
+      <p>今回宣言した<strong>School</strong>、<strong>classes</strong>はすべて<strong>Objecrt型</strong>になっています。</p>
+      <p>つまり、Javascript内のあらゆるオブジェクト(Numberなどのプリミティブは除きます)はすべて<strong>Object型</strong>が大本なのです。</p>
+      <p>Javascriptのアダムとイブみたいなものです。</p>
+      <p>これから複雑になっていきますが、これが大前提ですのでお忘れなきよう。</p>
+    </div>
+    <h2>じゃあclassって何？</h2>
+    <div class="article">
+      <p>ここからがJavascriptの真髄です。</p>
+      <p>先程のコードはすべてが<strong>Object型</strong>でした。</p>
+      <p>ここからは自由自在に好きな型のオブジェクトを生成する方法をご紹介します。</p>
+      <iframe height="800px" width="100%" src="https://repl.it/@k018c1077/JS3?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+    </div>
+    <p>これがクラスベースで言うところのクラスです。</p>
+    <p>これでいま<strong>mycar</strong>や<strong>bigcar</strong>は<strong>Car型</strong>のオブジェクトになっています。</p>
+    
+    <p>プログラムの最後にclass文でのパターンも書いてあります</p>
+    <p>結局の所書きやすくしているだけで、ベースの部分は全く変わりません。</p>
+    <p>プロトタイプベースでの宣言方法がわかった方にはなるほどな。とおもえるとおもいます
+    。</p>
+    <p>これを理解せずに<strong>class文</strong>を使用すると、どこかで見たようなクラスの一行目に<strong>let</strong>なんて書いて動作しないなあ、なんてことになるわけです。</p>
+  </section>
+  <section>
+    <h2>まとめ</h2>
+    <div class="article">
+      <p>今回は授業で詳しい解説のなかった部分のみの解説なのでここで終了です。</p>
+      <p>ここまでしっかり理解していればこの後のオブジェクトの継承などでもすんなりと理解できると思います。</p>
+      <p>みんなで頑張っていきましょう（笑）</p>
+      
+    </div>
+  </section>
+</body>
+</html>
